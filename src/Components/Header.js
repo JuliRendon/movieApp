@@ -35,10 +35,12 @@ export function Header() {
     </>
   ) : (
     <>
-      <CurrentMovie
-        currentMovie={showMovie}
-        onClose={() => setShowMovie({ show: false, movie: {} })}
-      />
+      {showMovie.show ? (
+        <CurrentMovie
+          currentMovie={showMovie}
+          onClose={(e) => setShowMovie({ show: false, movie: {} })}
+        />
+      ) : null}
 
       <div className={estilo.classRecomended}>
         <div

@@ -5,6 +5,12 @@ import {
   MdOutlineNavigateNext,
 } from 'react-icons/md';
 export default function Pagination({ setPage, currentPage, totalPages }) {
+  const style = {
+    pageButton:
+      'select-none cursor-pointer text-white font-bold min-w-6 px-1 w-6  h-6 bg-rojo flex justify-center align-middle items-center',
+    active:
+      'select-none text-white font-bold min-w-6 px-1 w-6  h-6 bg-black flex justify-center align-middle items-center',
+  };
   let pages = [];
   for (let i = currentPage; i < currentPage + 10; i++) {
     if (i <= totalPages) {
@@ -12,11 +18,11 @@ export default function Pagination({ setPage, currentPage, totalPages }) {
     }
   }
   return (
-    <div className='w-9/12 h-8 flex flex-wrap gap-2 justify-center mb-2'>
+    <div className='w-10/12 h-8 flex flex-wrap gap-2 justify-center mb-2'>
       {currentPage > 1 ? (
         <>
           <div
-            className='select-none cursor-pointer text-white font-bold w-6  h-6 bg-rojo flex justify-center align-middle items-center'
+            className={style.pageButton}
             onClick={() => {
               setPage({ value: `&page=1` });
             }}
@@ -24,7 +30,7 @@ export default function Pagination({ setPage, currentPage, totalPages }) {
             <MdOutlineFirstPage className='text-xl' />
           </div>
           <div
-            className='select-none cursor-pointer text-white font-bold w-6  h-6 bg-rojo flex justify-center align-middle items-center'
+            className={style.pageButton}
             onClick={() => {
               setPage({ value: `&page=${currentPage - 1}` });
             }}
@@ -38,13 +44,7 @@ export default function Pagination({ setPage, currentPage, totalPages }) {
       {pages.map((page, i) => {
         if (i === 0) {
           return (
-            <div
-              onClick={() => {
-                setPage({ value: `&page=${page}` });
-              }}
-              key={page}
-              className='select-none cursor-pointer text-white font-bold px-1  h-6 bg-black p-2 flex justify-center align-middle items-center'
-            >
+            <div key={page} className={style.active}>
               <p>{page}</p>
             </div>
           );
@@ -55,7 +55,7 @@ export default function Pagination({ setPage, currentPage, totalPages }) {
                 setPage({ value: `&page=${page}` });
               }}
               key={page}
-              className='select-none text-sm cursor-pointer text-white font-bold px-1  h-6 bg-rojo p-2 flex justify-center align-middle items-center'
+              className={style.pageButton}
             >
               <p>{page}</p>
             </div>
@@ -65,7 +65,7 @@ export default function Pagination({ setPage, currentPage, totalPages }) {
       {currentPage < totalPages ? (
         <>
           <div
-            className='select-none cursor-pointer text-white font-bold w-6  h-6 bg-rojo flex justify-center align-middle items-center'
+            className={style.pageButton}
             onClick={() => {
               setPage({ value: `&page=${currentPage + 1}` });
             }}
@@ -73,7 +73,7 @@ export default function Pagination({ setPage, currentPage, totalPages }) {
             <MdOutlineNavigateNext className='text-xl' />
           </div>
           <div
-            className='select-none cursor-pointer text-white font-bold w-6  h-6 bg-rojo flex justify-center align-middle items-center'
+            className={style.pageButton}
             onClick={() => {
               setPage({ value: `&page=${totalPages}` });
             }}

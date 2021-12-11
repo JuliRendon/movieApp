@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useMovies } from '../Hooks/useMovies';
 import { useSearchs } from '../Hooks/useSearch';
-// import { searchMovies } from '../services/searchMovies';
 import { CurrentMovie } from './CurrentMovie';
 import { Header } from './Header';
-// import { Header } from './Header';
 import { ListMovies } from './ListMovies';
 
 export function MoviesList() {
@@ -13,20 +11,12 @@ export function MoviesList() {
   const { loading, movies } = useMovies(keyword);
 
   const [showMovie, setShowMovie] = useState({ show: false, movie: {} });
-  // const [handleSearch, setHandleSearch] = useState('');
   const { moviesSearch, handleSearch, setHandleSearch, setMoviesSearch } =
     useSearchs();
 
   const handleChange = (e) => {
     setHandleSearch(e.target.value);
   };
-
-  // useEffect(() => {
-  //   if (handleSearch === null || handleSearch === '') return;
-  //   searchMovies(handleSearch).then((data) => {
-  //     setMovieSearch(data);
-  //   });
-  // }, [handleSearch]);
 
   const resetSearch = (e) => {
     setMoviesSearch({});
@@ -37,10 +27,12 @@ export function MoviesList() {
     <div>Cargando...</div>
   ) : (
     <>
-      <CurrentMovie
-        currentMovie={showMovie}
-        onClose={() => setShowMovie({ show: false, movie: {} })}
-      />
+      {showMovie.show ? (
+        <CurrentMovie
+          currentMovie={showMovie}
+          onClose={(e) => setShowMovie({ show: false, movie: {} })}
+        />
+      ) : null}
       {keyword.value === '&page=1' ? <Header /> : ''}
       <form
         action=''

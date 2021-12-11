@@ -27,9 +27,9 @@ export function CurrentMovie({ currentMovie, onClose }) {
   const style = {
     cerrar: 'transform scale-150 rotate-45 text-white',
     overlay:
-      'Overlay overflow-auto flex flex-col justify-center items-center fixed top-0 left-0 right-0 bottom-0 bg-white bg-opacity-70 z-50',
+      'Overlay flex flex-col justify-center items-center fixed top-0 left-0 right-0 bottom-0 bg-white bg-opacity-70 z-50',
     contenedor:
-      'relative overflow-x-auto max-w-4xl top-6 flex flex-wrap justify-center gap-x-4 gap-y-4',
+      'relative overflow-x-hidden max-w-4xl top-6 flex flex-wrap justify-center gap-x-4 gap-y-4',
     movieBox: 'shadow_movie relative w-52 h-80 flex justify-center ',
     movieDescription:
       'backdrop-filter min-h-full h-full backdrop-blur bg-white bg-opacity-50 px-4 pb-10 w-11/12 sm:w-2/3 ',
@@ -52,7 +52,7 @@ export function CurrentMovie({ currentMovie, onClose }) {
             </div>
           </div>
           <aside className={style.movieDescription}>
-            <h2 className='pt-2 text-xl font-bold text-rojo min-w-full'>
+            <h2 className='pt-2 text-xl font-bold text-rojo min-w-full '>
               {currentMovie.movie.title}
             </h2>
             {currentMovie.movie.adult ? (

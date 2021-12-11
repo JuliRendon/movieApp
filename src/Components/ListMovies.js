@@ -19,7 +19,7 @@ export function ListMovies({
         totalPages={totalPages}
         currentPage={currentPage}
       />
-      <ul className='moviegrid text-base'>
+      <ul className='moviegrid text-base mt-2'>
         {movies.map((movie) => (
           <li
             key={movie.id}

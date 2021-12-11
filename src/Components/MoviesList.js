@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useMovies } from '../Hooks/useMovies';
-import { SearchMovies } from '../services/searchMovies';
+import { useSearchs } from '../Hooks/useSearch';
+// import { searchMovies } from '../services/searchMovies';
 import { CurrentMovie } from './CurrentMovie';
 import { Header } from './Header';
 // import { Header } from './Header';
@@ -12,22 +13,23 @@ export function MoviesList() {
   const { loading, movies } = useMovies(keyword);
 
   const [showMovie, setShowMovie] = useState({ show: false, movie: {} });
-  const [handleSearch, setHandleSearch] = useState('');
-  const [movieSearch, setMovieSearch] = useState({});
+  // const [handleSearch, setHandleSearch] = useState('');
+  const { moviesSearch, handleSearch, setHandleSearch, setMoviesSearch } =
+    useSearchs();
 
   const handleChange = (e) => {
     setHandleSearch(e.target.value);
   };
 
-  useEffect(() => {
-    if (handleSearch === null || handleSearch === '') return;
-    SearchMovies(handleSearch).then((data) => {
-      setMovieSearch(data);
-    });
-  }, [handleSearch]);
+  // useEffect(() => {
+  //   if (handleSearch === null || handleSearch === '') return;
+  //   searchMovies(handleSearch).then((data) => {
+  //     setMovieSearch(data);
+  //   });
+  // }, [handleSearch]);
 
   const resetSearch = (e) => {
-    setMovieSearch({});
+    setMoviesSearch({});
     setHandleSearch('');
   };
 
@@ -59,14 +61,14 @@ export function MoviesList() {
         <FaSearch className='absolute right-3 top-1 text-rojo cursor-pointer' />
       </form>
 
-      {movieSearch.results ? (
+      {moviesSearch.results ? (
         <>
           <button onClick={resetSearch} className='bg-rojo px-3 text-white'>
             Volver
           </button>
           <ListMovies
             resetSearch={resetSearch}
-            movies={movieSearch.results}
+            movies={moviesSearch.results}
             setShowMovie={setShowMovie}
           />
         </>

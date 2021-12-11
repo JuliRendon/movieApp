@@ -10,7 +10,10 @@ export function ListMovies({
   return movies.length && movies.length === 0 ? (
     <div>No hay resultados..</div>
   ) : (
-    <main className='w-10/12  flex flex-col justify-center items-center gap-4'>
+    <main
+      id='list'
+      className='w-10/12  flex flex-col justify-center items-center gap-4'
+    >
       <Pagination
         setPage={setPage}
         totalPages={totalPages}

@@ -135,7 +135,6 @@ export function CurrentMovie({ currentMovie, onClose }) {
 }
 
 export function Message({ message, close }) {
-  console.log(message);
   if (message === '') return null;
   const style = {
     contenedor:

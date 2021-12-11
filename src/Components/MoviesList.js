@@ -4,6 +4,7 @@ import { useMovies } from '../Hooks/useMovies';
 import { SearchMovies } from '../services/searchMovies';
 import { CurrentMovie } from './CurrentMovie';
 import { Header } from './Header';
+// import { Header } from './Header';
 import { ListMovies } from './ListMovies';
 
 export function MoviesList() {
@@ -38,7 +39,7 @@ export function MoviesList() {
         currentMovie={showMovie}
         onClose={() => setShowMovie({ show: false, movie: {} })}
       />
-      <Header setShowMovie={setShowMovie} />
+      {keyword.value === '&page=1' ? <Header /> : ''}
       <form
         action=''
         className='relative w-6/12'
@@ -71,7 +72,6 @@ export function MoviesList() {
         </>
       ) : (
         <>
-          {/* <Pagination setPage={setKeyword} /> */}
           <ListMovies
             currentPage={movies.page}
             totalPages={movies.total_pages}
@@ -79,7 +79,6 @@ export function MoviesList() {
             setShowMovie={setShowMovie}
             setPage={setKeyword}
           />
-          {/* <Pagination setPage={setKeyword} /> */}
         </>
       )}
     </>

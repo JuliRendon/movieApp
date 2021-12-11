@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useMoviesHeader } from '../Hooks/useMoviesHeader';
-import Menu from './Menu';
+import { CurrentMovie } from './CurrentMovie';
+// import Menu from './Menu';
 
-export function Header({ setShowMovie }) {
+export function Header() {
   const { loading, moviesHeader } = useMoviesHeader();
+  const [showMovie, setShowMovie] = useState({ show: false, movie: {} });
 
   if (moviesHeader > 0) {
     moviesHeader.sort((a, b) => {
@@ -27,12 +30,16 @@ export function Header({ setShowMovie }) {
 
   return loading ? (
     <>
-      <Menu />
+      {/* <Menu /> */}
       <div>Cargando...</div>
     </>
   ) : (
-    <header className={estilo.classHeader}>
-      <Menu />
+    <>
+      <CurrentMovie
+        currentMovie={showMovie}
+        onClose={() => setShowMovie({ show: false, movie: {} })}
+      />
+
       <div className={estilo.classRecomended}>
         <div
           className={estilo.classRecomendedFull}
@@ -112,6 +119,6 @@ export function Header({ setShowMovie }) {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }

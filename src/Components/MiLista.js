@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { CurrentMovie } from './CurrentMovie';
 import { ListMovies } from './ListMovies';
 import { useMyList } from '../Hooks/useMyList';
-import Menu from './Menu';
 
 export function MiLista() {
   const { myList, loading } = useMyList();
@@ -17,8 +16,7 @@ export function MiLista() {
         currentMovie={showMovie}
         onClose={() => setShowMovie({ show: false, movie: {} })}
       />
-      <Menu />
-      <h2 className='text-lg font-bold border-b-2 border-rojo'>
+      <h2 className='font-bold text-rojo text-3xl border-b-2 border-rojo'>
         Mi Lista de Favoritos
       </h2>
       <ListMovies

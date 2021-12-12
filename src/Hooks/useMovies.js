@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getMovies } from '../services/getMovies';
+import { MoviesContext } from '../Context/MovieProvide';
 // import { Login } from '../services/Login';
 
 export function useMovies(keyword) {
   const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState({});
+  const { movies, setMovies } = useContext(MoviesContext);
+  // const [movies, setMovies] = useState({});
 
   useEffect(() => {
     setLoading(true);
@@ -12,6 +14,6 @@ export function useMovies(keyword) {
       setMovies(data);
       setLoading(false);
     });
-  }, [keyword]);
+  }, [keyword, setMovies]);
   return { loading, movies };
 }

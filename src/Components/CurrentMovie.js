@@ -1,16 +1,20 @@
+import { useContext } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useState } from 'react/cjs/react.development';
+import { SessionContext } from '../Context/SessionProvider';
 import { useMyList } from '../Hooks/useMyList';
 import { voteMovie } from '../services/voteMovie';
+import LoginLogout from './LoginLogout';
 
 export function CurrentMovie({ currentMovie, onClose }) {
+  const session = useContext(SessionContext);
   const [handleVote, setHandleVote] = useState('');
   const { myList, loading } = useMyList();
   const [message, setMessage] = useState('');
 
   let mylistid = [];
 
-  !loading && localStorage.getItem('guest_session_id')
+  !loading && session.session !== ''
     ? (mylistid = myList.map((movie) => movie.id))
     : (mylistid = []);
 
@@ -91,12 +95,12 @@ export function CurrentMovie({ currentMovie, onClose }) {
                 </p>
               </div>
             </div>
-            <div className='flex justify-center '>
+            <div className='flex flex-col justify-center items-center gap-2'>
               {mylistid.includes(currentMovie.movie.id) ? (
                 <h2 className='text-rojo font-bold'>
                   Ya votaste esta pelicula
                 </h2>
-              ) : (
+              ) : session.session !== '' ? (
                 <form
                   action=''
                   className='relative w-6/12 gap-y-2'
@@ -118,6 +122,11 @@ export function CurrentMovie({ currentMovie, onClose }) {
                     Votar
                   </button>
                 </form>
+              ) : (
+                <>
+                  <p>Inicia Sessión para votar esta Pelicula</p>
+                  <LoginLogout />
+                </>
               )}
             </div>
             <Message message={message} close={() => setMessage('')} />

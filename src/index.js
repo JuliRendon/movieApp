@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './Home';
-// import { login } from './services/Login';
+
+import { SessionProvider } from './Context/SessionProvider';
 
 ReactDOM.render(
   <StrictMode>
-    <Home />
+    <SessionProvider>
+      <Home />
+    </SessionProvider>
   </StrictMode>,
   document.getElementById('root')
 );

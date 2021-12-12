@@ -15,7 +15,6 @@ export function voteMovie(idMovie, voteMovie, setMessage) {
     }
   )
     .then((response) => {
-      console.log(response);
       return response.json();
     })
     .then((data) => {

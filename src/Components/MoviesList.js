@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useMovies } from '../Hooks/useMovies';
 import { useSearchs } from '../Hooks/useSearch';
 import { CurrentMovie } from './CurrentMovie';
 import { Header } from './Header';
 import { ListMovies } from './ListMovies';
+import { MoviesContext } from '../Context/MovieProvide';
 
 export function MoviesList() {
+  const moviesContext = useContext(MoviesContext);
+
   const [keyword, setKeyword] = useState({ value: '&page=1' });
-  const { loading, movies } = useMovies(keyword);
+  const { loading } = useMovies(keyword);
+  const movies = moviesContext.movies;
 
   const [showMovie, setShowMovie] = useState({ show: false, movie: {} });
   const { moviesSearch, handleSearch, setHandleSearch, setMoviesSearch } =

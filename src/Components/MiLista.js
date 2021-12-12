@@ -19,11 +19,15 @@ export function MiLista() {
       <h2 className='font-bold text-rojo text-3xl border-b-2 border-rojo'>
         Mi Lista de Favoritos
       </h2>
-      <ListMovies
-        movies={myList}
-        setShowMovie={setShowMovie}
-        loading={loading}
-      />
+      {myList.length > 0 ? (
+        <ListMovies
+          movies={myList}
+          setShowMovie={setShowMovie}
+          loading={loading}
+        />
+      ) : (
+        <p>La lista esta vacia!!!</p>
+      )}
     </>
   );
 }

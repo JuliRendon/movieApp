@@ -29,10 +29,7 @@ export function Header() {
   };
 
   return loading ? (
-    <>
-      {/* <Menu /> */}
-      <div>Cargando...</div>
-    </>
+    <div>Cargando...</div>
   ) : (
     <>
       {showMovie.show ? (

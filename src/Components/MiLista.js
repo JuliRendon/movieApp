@@ -12,10 +12,12 @@ export function MiLista() {
     <div>Cargando...</div>
   ) : (
     <>
-      <CurrentMovie
-        currentMovie={showMovie}
-        onClose={() => setShowMovie({ show: false, movie: {} })}
-      />
+      {showMovie.show ? (
+        <CurrentMovie
+          currentMovie={showMovie}
+          onClose={() => setShowMovie({ show: false, movie: {} })}
+        />
+      ) : null}
       <h2 className='font-bold text-rojo text-3xl border-b-2 border-rojo'>
         Mi Lista de Favoritos
       </h2>

@@ -1,17 +1,17 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './Home';
-
 import { SessionProvider } from './Context/SessionProvider';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <StrictMode>
-    <SessionProvider>
+  <SessionProvider>
+    <Router>
       <Home />
-    </SessionProvider>
-  </StrictMode>,
+    </Router>
+  </SessionProvider>,
   document.getElementById('root')
 );
 

@@ -21,7 +21,7 @@ export function voteMovie(idMovie, voteMovie, setMessage) {
       if (data.status_code === 1) {
         setMessage('Voto Registrado con exito');
       } else {
-        setMessage('Upppsss... parece que algo fallo!!!');
+        setMessage(data.status_message);
         console.log(data);
       }
 

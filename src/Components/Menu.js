@@ -4,7 +4,7 @@ import { SessionContext } from '../Context/SessionProvider';
 import LoginLogout from './LoginLogout';
 
 export default function Menu() {
-  const session = useContext(SessionContext);
+  const { session } = useContext(SessionContext);
   let locationMatch = useMatch('/milista');
 
   return (
@@ -12,7 +12,7 @@ export default function Menu() {
       <header className='w-full z-50 sticky inset-0  bg-white bg-opacity-90 flex flex-col py-3 justify-center gap-2'>
         <h1 className='text-7xl text-rojo font-extrabold'>NextFlix</h1>
         <div className='flex  justify-center gap-2'>
-          {session.session !== '' ? (
+          {session.sessionState ? (
             locationMatch ? (
               <Link
                 to='/'

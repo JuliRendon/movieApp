@@ -1,12 +1,41 @@
-import { createContext } from 'react';
-import useLocalStorage from '../Hooks/useLocalStorage';
+import { createContext, useReducer } from 'react';
+import { getSessionId } from '../services/getSessionId';
 
-export const SessionContext = createContext('');
+export const SessionContext = createContext({});
+
+const sessionReducer = (state, action) => {
+  switch (action.type) {
+    case 'login':
+      getSessionId().then((sessionId) => {
+        localStorage.setItem(state.keyToken, sessionId.guest_session_id);
+      });
+      return {
+        ...state,
+        keyToken: state.keyToken,
+        sessionId: localStorage.getItem(state.keyToken),
+        sessionState: true,
+      };
+    case 'logout':
+      localStorage.setItem(state.keyToken, '');
+      return {
+        ...state,
+        keyToken: state.keyToken,
+        sessionId: localStorage.getItem(state.keyToken),
+        sessionState: false,
+      };
+    default:
+      return state;
+  }
+};
 
 export function SessionProvider({ children }) {
-  const [session, setSession] = useLocalStorage('guest_session_id', '');
+  const [session, dispatchSession] = useReducer(sessionReducer, {
+    keyToken: 'guest_session_id',
+    sessionId: localStorage.getItem('guest_session_id'),
+    sessionState: localStorage.getItem('guest_session_id') ? true : false,
+  });
   return (
-    <SessionContext.Provider value={{ session, setSession }}>
+    <SessionContext.Provider value={{ session, dispatchSession }}>
       {children}
     </SessionContext.Provider>
   );

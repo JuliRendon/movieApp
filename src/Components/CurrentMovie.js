@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 import { SessionContext } from '../Context/SessionProvider';
 import { useMyList } from '../Hooks/useMyList';
@@ -7,14 +8,14 @@ import { voteMovie } from '../services/voteMovie';
 import LoginLogout from './LoginLogout';
 
 export function CurrentMovie({ currentMovie, onClose }) {
-  const session = useContext(SessionContext);
+  const { session } = useContext(SessionContext);
   const [handleVote, setHandleVote] = useState('');
   const { myList, loading } = useMyList();
   const [message, setMessage] = useState('');
 
   let mylistid = [];
 
-  !loading && session.session !== ''
+  !loading && session.sessionState
     ? (mylistid = myList.map((movie) => movie.id))
     : (mylistid = []);
 
@@ -25,7 +26,8 @@ export function CurrentMovie({ currentMovie, onClose }) {
   const voteMovies = (e) => {
     e.preventDefault();
     voteMovie(currentMovie.movie.id, Number(handleVote), setMessage);
-    setHandleVote('');
+    setHandleVote('Gracias por tu voto');
+    mylistid = myList.map((movie) => movie.id);
   };
 
   const style = {
@@ -100,7 +102,7 @@ export function CurrentMovie({ currentMovie, onClose }) {
                 <h2 className='text-rojo font-bold'>
                   Ya votaste esta pelicula
                 </h2>
-              ) : session.session !== '' ? (
+              ) : session.sessionState === true ? (
                 <form
                   action=''
                   className='relative w-6/12 gap-y-2'
@@ -129,7 +131,7 @@ export function CurrentMovie({ currentMovie, onClose }) {
                 </>
               )}
             </div>
-            <Message message={message} close={() => setMessage('')} />
+            <Message message={message} />
           </aside>
           <button
             onClick={onClose}
@@ -157,9 +159,9 @@ export function Message({ message, close }) {
     <div className={style.contenedor}>
       <article className={style.mensaje}>
         {message}
-        <button onClick={close} className={style.boton}>
+        <Link to='/milista' className={style.boton}>
           ok!!
-        </button>
+        </Link>
       </article>
     </div>
   );

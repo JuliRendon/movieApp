@@ -3,6 +3,12 @@ import { useContext } from 'react';
 import { SessionContext } from '../Context/SessionProvider';
 import LoginLogout from './LoginLogout';
 
+/**
+ * @name Menu
+ * @description usa el contexto de session para saber que botones muestra junto al titulo de la App
+ * @returns Retorna el titulo de la app y el boton de iniciar o cerrar sessión.
+ */
+
 export default function Menu() {
   const { session } = useContext(SessionContext);
   let locationMatch = useMatch('/milista');

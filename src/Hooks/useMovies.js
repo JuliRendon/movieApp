@@ -1,12 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { getMovies } from '../services/getMovies';
 import { MoviesContext } from '../Context/MovieProvide';
-// import { Login } from '../services/Login';
+
+/**
+ * @name useMovies
+ * @param {keyword} keyword puede contener parametros de busqueda o params
+ * @returns Retorna un arreglo de peliculas y el estado de la conslta del fetch con true si no hay error
+ */
 
 export function useMovies(keyword) {
   const [loading, setLoading] = useState(true);
   const { movies, setMovies } = useContext(MoviesContext);
-  // const [movies, setMovies] = useState({});
 
   useEffect(() => {
     setLoading(true);

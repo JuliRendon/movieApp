@@ -1,6 +1,12 @@
 import { createContext, useReducer } from 'react';
 import { getSessionId } from '../services/getSessionId';
 
+/**
+ * @name SessionContext
+ * @description Contexto que contiene el reducer de sessión que maneja el login y logout
+ * @returns Retorna un Provider con session y dispatch
+ */
+
 export const SessionContext = createContext({});
 
 const sessionReducer = (state, action) => {

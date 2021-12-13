@@ -3,6 +3,11 @@ import { CurrentMovie } from './CurrentMovie';
 import { ListMovies } from './ListMovies';
 import { useMyList } from '../Hooks/useMyList';
 
+/**
+ * @name MiLista
+ * @description Usa el Hook useMyList para obtener als peliculas que ha votado y mostrarlas en al ruta /miLista
+ * @returns Retorna el arreglo compuesto por las peliculas que se han votado en la sessión activa
+ */
 export function MiLista() {
   const { myList, loading } = useMyList();
 

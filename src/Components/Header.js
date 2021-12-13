@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { useMoviesHeader } from '../Hooks/useMoviesHeader';
 import { CurrentMovie } from './CurrentMovie';
-// import Menu from './Menu';
+
+/**
+ * @name Header
+ * @description utiliza el Hook useMoviesHeader para obtener la primera pagina de las peliculas mas recomendadas de la api y las oredena para mostrar la 6 mas votadas
+ * @returns Retorna un arreglo de las 6 peliculas mas recomendadas por al api ordenadas de mayo a menor
+ */
 
 export function Header() {
   const { loading, moviesHeader } = useMoviesHeader();

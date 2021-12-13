@@ -1,6 +1,12 @@
 import { useContext } from 'react';
 import { SessionContext } from '../Context/SessionProvider';
 
+/**
+ * @name LoginLogout
+ * @description Usa el context SessionContext que contiene un reducer que maneja el Login y el Logout.
+ * @returns
+ */
+
 export default function LoginLogout() {
   const { session, dispatchSession } = useContext(SessionContext);
 

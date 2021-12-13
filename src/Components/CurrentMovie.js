@@ -7,6 +7,17 @@ import { useMyList } from '../Hooks/useMyList';
 import { voteMovie } from '../services/voteMovie';
 import LoginLogout from './LoginLogout';
 
+/**
+ *@name CurrenteMovie
+ *@description Muestra la pelicula que se ha clicado en un overlay con todas sus propiedades y la opcion de votar.
+ * @param {currentMovie, onClose} param0
+ * @constant CurrentMovie llega por parametros, es un estado con un objeto { show: false, movie: {} }.
+ * @function onClose Llega por parametros y modifica el estado de Current movie borrando las propiedades del objeto
+ * @returns Retorna un overlay con la informaciond e la pelicula seleccionada y un form de votación o message si ya se voto.
+ * @function VoteMovie se ejecuta para enviar el voto de al pelicula
+ * @require {session} que viene del contexto e indica si se esta logueado para poder votar.
+ */
+
 export function CurrentMovie({ currentMovie, onClose }) {
   const { session } = useContext(SessionContext);
   const [handleVote, setHandleVote] = useState('');

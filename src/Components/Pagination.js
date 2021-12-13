@@ -4,6 +4,16 @@ import {
   MdOutlineLastPage,
   MdOutlineNavigateNext,
 } from 'react-icons/md';
+
+/**
+ *
+ * @param {setPage, currentPage, totalPages} param0
+ * @function setpage maneja la pagina de destino para actualizar el estado del padre
+ * @const currenPage indica la pagina activa
+ * @const totalPages indica el numero total de gaginas para la pagnación
+ * @returns Retorna un arreglo de elementos con las paginas disponibles para navegar
+ */
+
 export default function Pagination({ setPage, currentPage, totalPages }) {
   const style = {
     pageButton:

@@ -1,5 +1,16 @@
 import Pagination from './Pagination';
 
+/**
+ * @name ListMovies
+ * @param {setShowMovie,setPage,movies,totalPages,currentPage,} param0
+ * @function setShowMovi modifica el estado de la current movie para saber si se muestra el overlay
+ * @function setPage modifica el estado de la pagina activa para hacer la peticion nuevamente a la api
+ * @const movies es un arreglo con las peliculas recuperadas en el componente que al llama
+ * @const totalPages indica el numero total de paginas para la paginación
+ * @const currentPage indica la pagina activa
+ * @returns retorna un listado con als peliculas recibidas desde MoviesList o MyList
+ */
+
 export function ListMovies({
   setShowMovie,
   setPage,

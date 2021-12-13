@@ -7,6 +7,13 @@ import { Header } from './Header';
 import { ListMovies } from './ListMovies';
 import { MoviesContext } from '../Context/MovieProvide';
 
+/**
+ * @name MoviesList
+ * @description Usa el Movie Context, hecho como muestra para el manejo de contextos y las envia al componente y contiene la barra y resultados de busqueda
+ * @const useSearchs Es un Hook que devuelve los resultados de busqueda de la Api y los lista a cambio del contexto
+ * @returns Retorna un ListMovies con la lista de peliculas del contexto por defecto o los resultados de bisqueda
+ */
+
 export function MoviesList() {
   const moviesContext = useContext(MoviesContext);
 

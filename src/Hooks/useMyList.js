@@ -4,6 +4,7 @@ import { getList } from '../services/getList';
 
 /**
  * @name useMyLimport
+ * @type Hook
  * @description Recupera un listado de las peliculas votadas por la sessióna ctiva
  * @returns Retorna dos estados, uno con un arreglod e peliculas y otro con tru o false del fetch
  */

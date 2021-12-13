@@ -6,6 +6,11 @@ import Home from './Home';
 import { SessionProvider } from './Context/SessionProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+/**
+ * Entrada de la app por el componente Home envuelta por el contexto de session y enrutamiento
+ * @author [Julian Andres Rendon Parra]
+ */
+
 ReactDOM.render(
   <SessionProvider>
     <Router>

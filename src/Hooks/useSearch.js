@@ -3,6 +3,7 @@ import { searchMovies } from '../services/searchMovies';
 
 /**
  * @name useSearchs
+ * @type Hook
  * @description realiza busquedas en la api segun se ingrese texto en el form de MoviesList
  * @returns Retorna dos estados y sus funciones modificadoras, uno para manejar el form y otro con los resultados de busquda
  */

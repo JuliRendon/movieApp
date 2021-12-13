@@ -7,9 +7,9 @@ import { MoviesContextProvider } from './Context/MovieProvide';
 
 /**
  *
- * @returns MoviesContextProvider con el contenedor general el componente <Menu> y las rutas
  * @name Home
- * @static Hay dos path estaticos uno para el listado de peluculas por defecto y otro a la lista de peliculas votadas
+ * @descripcion Hay dos path estaticos uno para el listado de peluculas por defecto y otro a la lista de peliculas votadas
+ * @returns MoviesContextProvider con el contenedor general el componente <Menu> y las rutas
  *
  */
 function Home() {
